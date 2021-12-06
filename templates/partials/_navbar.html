@@ -1,0 +1,144 @@
+{% load static %}
+
+<!-- container -->
+<!-- header -->
+<div id="home" class="header">
+  <div class="container">
+    <!-- top-hedader -->
+    <div class="top-header">
+      <!-- /logo -->
+      <!--top-nav-->
+      <div class="top-nav">
+        <div class="navigation">
+          <div class="logo">
+            <h1>
+              <a href="{% url 'index' %}"><span>R</span>ESUME</a>
+            </h1>
+          </div>
+          <div class="navigation-right">
+            <span class="menu"
+              ><img src="{% static 'img/menu.png' %}" alt=" "
+            /></span>
+            <nav class="link-effect-3" id="link-effect-3">
+              <ul class="nav1 nav">
+                <li class="active">
+                  <a data-hover="Home" href="">Home</a>
+                </li>
+                <li>
+                  <a class="scroll" data-hover="About" href="#about">About</a>
+                </li>
+                <li>
+                  <a class="scroll" data-hover="Skill" href="#services"
+                    >Skill</a
+                  >
+                </li>
+                <li>
+                  <a class="scroll" data-hover="Experience" href="#work"
+                    >Experience</a
+                  >
+                </li>
+                <li>
+                  <a class="scroll" data-hover="Education" href="#education"
+                    >Education</a
+                  >
+                </li>
+                <li>
+                  <a class="scroll" data-hover="Portfolio" href="#port"
+                    >Portfolio</a
+                  >
+                </li>
+                <li>
+                  <a class="scroll" data-hover="Training" href="#blogs">Training</a>
+                </li>
+                <li>
+                  <a class="scroll" data-hover="Contact" href="#contact"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <!-- script-for-menu -->
+            <script>
+              $("span.menu").click(function() {
+                $("ul.nav1").slideToggle(300, function() {
+                  // Animation complete.
+                });
+              });
+            </script>
+            <!-- /script-for-menu -->
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <!-- /top-hedader -->
+      </div>
+      {% if users %} {% for user in users %}
+      <div class="banner-info">
+        <div class="col-md-7 header-right">
+          <h1>Hi !</h1>
+          <h6>{{ user.main_title }}</h6>
+          <ul class="address">
+            <li>
+              <ul class="address-text">
+                <li><b>NAME</b></li>
+                <li>{{ user.full_name }}</li>
+              </ul>
+            </li>
+            <li>
+              <ul class="address-text">
+                <li><b>D.O.B</b></li>
+                <li>{{ user.dob }} ({{ user.dob | timesince }})</li>
+              </ul>
+            </li>
+            <li>
+              <ul class="address-text">
+                <li><b>PHONE </b></li>
+                <li>{{ user.phone }}</li>
+              </ul>
+            </li>
+            <li>
+              <ul class="address-text">
+                <li><b>ADDRESS </b></li>
+                <li>{{ user.address }}, {{ user.city }}</li>
+              </ul>
+            </li>
+            <li>
+              <ul class="address-text">
+                <li><b>E-MAIL </b></li>
+                <li><a href="#contact"> {{ user.email }}</a></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="address-text">
+                <li><b>WEBSITE </b></li>
+                <li>
+                  <a href="{{ user.website }}" target="_blank"
+                    >{{ user.website }}</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        {% if images %} {% for image in images %}
+        <div class="col-md-5 header-left">
+          <div class="block-neon glow">
+             <img src="{{ image.image_path.url }}" alt="" /> 
+          </div>
+        </div>
+        {% endfor %} {% else %}
+        <div class="col-md-5 header-left">
+          <div class="block-neon glow">
+            <img src="{% static 'img/user-image.jpg' %}" alt="Ops!!!" />
+          </div>
+        </div>
+        {% endif %}
+        <div class="clearfix"></div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>No User Information Available</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<!-- services -->
+<div id="services" class="services">
+  <div class="container">
+    <div class="service-head one text-center ">
+      <h4>WHAT I HAVE</h4>
+      <h3>MY <span>SKILLS</span></h3>
+      <span class="border two"></span>
+    </div>
+    <!-- services-grids -->
+    <div class="wthree_about_right_grids w3l-agile">
+      {% if skills %} {% for skill in skills %}
+      <div class="col-md-6 wthree_about_right_grid">
+        <div class="col-xs-2 wthree_about_right_grid_left">
+          <div class="hvr-rectangle-in">
+            {% if skill.skill_level < 60 %}
+            <i class="glyphicon glyphicon-pencil"></i>
+          </div>
+        </div>
+        <div class="col-xs-8 wthree_about_right_grid_right">
+          <h4>
+            {{ skill.skill_name }}
+            <span class="pull-right">{{ skill.skill_level }}%</span>
+          </h4>
+
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-warning progress-bar-striped active"
+              role="progressbar"
+              aria-valuenow="{{ skill.skill_level }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width:{{ skill.skill_level }}%"
+            >
+              {% else %}
+              <i class="glyphicon glyphicon-gift"></i>
+            </div>
+          </div>
+          <div class="col-xs-8 wthree_about_right_grid_right">
+            <h4>
+              {{ skill.skill_name }}
+              <span class="pull-right">{{ skill.skill_level }}%</span>
+            </h4>
+
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-info progress-bar-striped active"
+                role="progressbar"
+                aria-valuenow="{{ skill.skill_level }}"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width:{{ skill.skill_level }}%"
+              >
+                {% endif %} {{ skill.skill_level }}%
+              </div>
+            </div>
+            <p>
+              {{ skill.skill_details }}
+            </p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        {% endfor %} {% else %}
+        <div class="col-md-12">
+          <p>No Skill Found !!!</p>
+        </div>
+        {% endif %}
+
+        <div class="clearfix"></div>
+      </div>
+
+      <!-- services-grids -->
+    </div>
+  </div>
+  <!-- services -->
+</div>

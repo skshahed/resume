@@ -1,0 +1,91 @@
+{% load static %}
+
+<!--work-experience-->
+<div id="education" class="work">
+    <div class="container">
+        <div class="service-head text-center">
+            <h4>WHAT I ACHIEVED</h4>
+            <h3>MY <span>EDUCATION</span></h3>
+            <span class="border one"></span>
+        </div>
+
+        <div class="time-main">
+            {% if educations %} {% for education in educations %}
+            <div class="col-md-6">
+                <ul class="year">
+                    <li>{{ education.start_date }} - {{ education.end_date }}</li>
+                </ul>
+            </div>
+            <div class="col-md-6 timeline">
+                <li>
+                    {% if forloop.counter|divisibleby:2 %}
+                    <div class="timeline-badge success"><i class="glyphicon glyphicon-briefcase"></i></div>
+                    {% else %}
+                    <div class="timeline-badge info"><i class="glyphicon glyphicon-briefcase"></i></div>
+                    {% endif %}
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">{{ education.degree }}</h4>
+                            <h5 class="timeline-institute">From, <label>{{ education.institute_name }}</label>,
+                                {{ education.location }}
+                            </h5>
+                        </div>
+                        <div class="timeline-body">
+                            <p>{{ education.description }}</p>
+                        </div>
+                    </div>
+                </li>
+            </div>
+            {% endfor %} {% else %}
+            <div class="col-md-12">
+                <p>No Education Earned !!!</p>
+            </div>
+            {% endif %}
+
+            <div class="clearfix"></div>
+        </div>
+        <!--- <div class="time-main w3l-agile">
+            <div class="col-md-6 year-info">
+                <ul class="year">
+                    <li>2016 - 2020</li>
+                    <li>2015</li>
+                    <li>2014</li>
+                    <li>2013</li>
+                    <li>2012</li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <ul class="col-md-6 timeline">
+                <li>
+                    <div class="timeline-badge info"><i class="glyphicon glyphicon-briefcase"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">Degree</h4>
+                            <h5 class="timeline-institute">Institute, Location</h5>
+                        </div>
+                        <div class="timeline-body">
+                            <p></p>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="timeline-badge info"><i class="glyphicon glyphicon-briefcase"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">Degree</h4>
+                            <h5 class="timeline-institute"><i>From,</i> Institute, Location</h5>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Lorem ipsum dolor sit amet.Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+                                reiciendis voluptatibus maiores </p>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="clearfix"></div>
+        </div> -->
+    </div>
+</div>
+<!--//work-experience-->

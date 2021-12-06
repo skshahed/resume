@@ -1,0 +1,106 @@
+{% load static %}
+
+<!-- top-grids -->
+<div class="blog" id="blogs">
+    <div class="container">
+        <div class="service-head text-center">
+            <h4>TRAINING</h4>
+            <h3>MY <span>TRAININGS</span></h3>
+            <span class="border one"></span>
+        </div>
+        {% if trainings %} {% for training in trainings %}
+        {% if forloop.counter|divisibleby:2 %}
+        <div class="news-grid w3l-agile">
+            <div class="col-md-6 news-img">
+                <div class="neon">
+                    <span class="text" data-text="{{ training.training_name }}">{{ training.training_name }}</span>
+                    <span class="gradient"></span>
+                    <span class="spotlight"></span>
+                </div> 
+            </div>
+            <div class="col-md-6 news-text">
+                <h3> <a href="#" data-toggle="modal" data-target="#myModal{{ training.id }}">{{ training.institute }}</a></h3>
+                <ul class="news">
+                    <li><i class="glyphicon glyphicon-book"></i> {{ training.start_date }}</li>
+                    <li><i class="glyphicon glyphicon-arrow-right"></i></li>
+                    <li><i class="glyphicon glyphicon-education"></i> {{ training.end_date }}</li>
+                </ul>
+                <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias
+                    consequatur aut perferendis doloribus asperiores repellat.t, qui dolorem
+                    i.</p>
+                <a href="#" data-toggle="modal" data-target="#myModal{{ training.id }}" class="read hvr-shutter-in-horizontal">Read
+                    More</a>
+
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        {% else %}
+        <div class="news-grid">
+            <div class="col-md-6 news-text two">
+                <h3> <a href="#" data-toggle="modal" data-target="#myModal{{ training.id }}">{{ training.institute }}</a></h3>
+                <ul class="news">
+                    <li><i class="glyphicon glyphicon-book"></i> {{ training.start_date }}</li>
+                    <li><i class="glyphicon glyphicon-arrow-right"></i></li>
+                    <li><i class="glyphicon glyphicon-education"></i> {{ training.end_date }}</li>
+                </ul>
+                <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias
+                    consequatur aut perferendis doloribus asperiores repellat. Neque porro quisquam est, qui dolorem
+                    ipsum quia dolor sit amet.</p>
+                <a href="#" data-toggle="modal" data-target="#myModal{{ training.id }}" class="read hvr-shutter-in-horizontal">Read
+                    More</a>
+
+            </div>
+            <div class="col-md-6 news-img two">
+                <div class="neon">
+                    <span class="text" data-text="{{ training.training_name }}">{{ training.training_name }}</span>
+                    <span class="gradient"></span>
+                    <span class="spotlight"></span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        {% endif %}
+        {% endfor %} {% else %}
+            <div class="col-md-12">
+                <p>No Completed Training !!!</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<!-- top-grids -->
+<!-- /blog-pop-->
+{% for training in trainings %}
+<div class="modal ab fade" id="myModal{{ training.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog about" role="document">
+        <div class="modal-content about">
+            <div class="modal-header">
+                <button type="button" class="close ab" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body about">
+                <div class="about">
+
+                    <div class="about-inner">
+                        <div class="neon">
+                            <h2 class="text-design" data-text="thanks">{{ training.training_name }}</h2>
+                            <span class="gradient"></span>
+                            <span class="spotlight"></span>
+                        </div>
+                        <h4 class="tittle">{{ training.institute }}</h4>
+                        <p>Lorem ipsum dolor sit amet Integer gravida,Lorem ipsum dolor sit amet Integer gravida
+                            velit,Ming sits in the corner the whole day. She's into crochet. quis dolor
+                            tristiqumsan.Mirum est notare quam littera gothica, quam nunc putamus parum claram,
+                            anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. velit
+                            quis dolor tristiqumsan.</p>
+                        <p>Lorem ipsum dolor sit amet. Integer gravida velit quis dolor tristiqumsan.anteposuerit
+                            litterarum formas humanitatis per seacula amet Integer gravida velit. </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- //blog-pop-->

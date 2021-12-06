@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %} | Sign Up | Register
+{% endblock %}
+
+{% block content %}
+
+<div class="body-form">
+   <form action={% url 'register' %} id="login-form" method="POST">
+    {% csrf_token %}
+      <div class="con">
+      <!--     Start  header Content  -->
+         <header class="head-form">
+            <h2>Sign Up</h2>
+            <p>Please enter sign up details</p>
+         </header>
+         <!--     End  header Content  -->
+         
+         <!-- Alerts -->
+         {% include 'partials/_alerts.html' %}
+
+         <div class="field-set">
+            <span class="input-item">
+               <i class="fa fa-user-alt"></i>
+            </span>
+            <input class="form-input" id="txt-input" type="text" name="first_name" placeholder="Enter First Name" required>
+            <br>
+
+            <span class="input-item">
+               <i class="fa fa-user-circle"></i>
+            </span>
+            <input class="form-input" id="txt-input" type="text" name="last_name" placeholder="Enter Last Name" required>
+            <br>
+
+            <span class="input-item">
+               <i class="fa fa-envelope-open"></i>
+            </span>
+            <input class="form-input" id="txt-input" type="Email" name="email" placeholder="Enter Email" required>
+            <br>
+
+            <span class="input-item">
+               <i class="fa fa-smile"></i>
+            </span>
+            <input class="form-input" id="txt-input" type="text" name="username" placeholder="Enter UserName" required>
+            <br>
+
+            <span class="input-item">
+                <i class="fa fa-key"></i>
+            </span>
+            <input class="form-input" type="password" placeholder="Enter Password" id="pwd"  name="password" required>
+
+            <span>
+                <i class="fa fa-eye eye" aria-hidden="true"  type="button" id="eye"></i>
+            </span>
+            <br>
+
+            <span class="input-item">
+                <i class="fa fa-repeat"></i>
+            </span>
+            <input class="form-input" type="password" placeholder="Confirm Password" id="pwd2"  name="password2" required>
+
+            <span>
+                <i class="fa fa-eye eye" aria-hidden="true"  type="button" id="eye2"></i>
+            </span>
+            <br>
+
+            <button class="log-in"> Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i></button>
+         </div>
+      
+         <div class="other">
+            <span > Already a member? <button id="login-btn" ><a href="{% url 'login' %}" >Log In</a></button></span>
+         </div>
+      </div>
+   </form>
+</div>
+{% endblock %}

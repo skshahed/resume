@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} | Account Login
+{% endblock %}
+
+{% block content %}
+
+<div class="body-form">
+  <form action={% url 'login' %} id="login-form" method="POST">
+   {% csrf_token %}
+      <div class="con">
+      <!--     Start  header Content  -->
+         <header class="head-form">
+            <h2>Log In</h2>
+            <p>Login here using your username and password</p>
+         </header>
+         <!--     End  header Content  -->
+
+         <!-- Alerts -->
+         {% include 'partials/_alerts.html' %}
+
+         <div class="field-set">
+               <span class="input-item">
+               <i class="fa fa-user-circle"></i>
+               </span>
+               <input class="form-input" id="txt-input" name="username" type="text" placeholder="Enter UserName" required>
+            <br>
+            <span class="input-item">
+            <i class="fa fa-key"></i>
+            </span>
+            <input class="form-input" type="password" placeholder="Enter Password" id="pwd"  name="password" required>
+         <span>
+            <i class="fa fa-eye eye" aria-hidden="true"  type="button" id="eye"></i>
+         </span>
+            <br>
+            <button class="log-in"> Log In </button>
+         </div>
+      
+         <div class="other">
+            <button class="btn submits frgt-pass"><a href="{% url 'register' %}" >Forgot Password</a></button>
+            <button class="btn submits sign-up"><a href="{% url 'register' %}" >Sign Up</a>
+            <i class="fa fa-user-plus" aria-hidden="true"></i>
+            </button>
+         </div>
+      </div>
+   </form>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!--work-experience-->
+<div id="work" class="work">
+  <div class="container">
+    <div class="service-head text-center">
+      <h4>WHAT I DID</h4>
+      <h3>MY <span>EXPERIENCE</span></h3>
+      <span class="border one"></span>
+    </div>
+    {% if experiences %} {% for experience in experiences %}
+    <div class="experience-grids">
+      <div class="experience-left">
+        <div class="location-icon">
+          <h4>{{ experience.location }}</h3>
+        </div>
+
+        <h3>{{ experience.start_date }} - {{ experience.end_date }}</h3>
+        <h5>{{ experience.company_name }}</h5>
+      </div>
+      <div class="experience-right">
+        <h4>{{ experience.designation }}</h4>
+        <p>
+          {{ experience.responsibility }}
+        </p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="col-md-12">
+      <p>No Experience Yet !!!</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+<!--//work-experience-->

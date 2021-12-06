@@ -1,0 +1,272 @@
+{% load static %} {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- Custom Theme files -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/nav_sidebar.css' %}">
+    <script src="{% static 'admin/js/nav_sidebar.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/forms.css' %}">
+
+    <!-- Custom Theme files -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Sk. Abu Shahed Alam's Resume" />
+    <!-- webfonts -->
+    <link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <!-- webfonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+          event.preventDefault();
+          $("html,body").animate(
+            { scrollTop: $(this.hash).offset().top },
+            1000
+          );
+        });
+      });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <title>Resume {% block title %} | Dashboard {% endblock %} </title>
+  </head>
+
+  <body>
+    <!-- Top Bar -->
+    {% include 'partials/_topbar.html' %}
+
+
+    <!-- Container -->
+    <div id="container">
+
+    <div class="breadcrumbs">
+        <a href="/admin/">Home</a>
+        &rsaquo; <a href="/admin/users/">Users</a>
+        &rsaquo; <a href="/admin/users/education/">Educations</a>
+        &rsaquo; Add education
+    </div>
+        <div class="main shifted" id="main">
+        
+    <button class="sticky toggle-nav-sidebar" id="toggle-nav-sidebar" aria-label="Toggle navigation"></button>
+    <nav class="sticky" id="nav-sidebar">
+    
+        <div class="app-auth module">
+        <table>
+            <caption>
+            Profile Information Update
+            </caption>
+            <tr class="model-group">
+              <th scope="row"><a href="/accounts/dashboard">Profile</a></th>
+                <td><a href="/accounts/dashboard" class="changelink">Update</a></td>
+            </tr>
+        </table>
+        </div>
+    
+        <div class="app-users module current-app">
+        <table>
+            <caption>
+            <a href="/admin/users/" class="section" title="Models in the Users application">Personalize Information</a>
+            </caption>
+            
+            <tr class="model-category">
+                
+                <th scope="row"><a href="/admin/users/category/">Categorys</a></th>
+                <td><a href="/admin/users/category/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-education current-model">
+                
+                <th scope="row"><a href="/admin/users/education/" aria-current="page">Educations</a></th>
+                <td><a href="/admin/users/education/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-experience">
+                
+                <th scope="row"><a href="/admin/users/experience/">Experiences</a></th>
+                <td><a href="/admin/users/experience/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-hireplatform">
+                
+                <th scope="row"><a href="/admin/users/hireplatform/">Hire platforms</a></th>
+                <td><a href="/admin/users/hireplatform/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-image">
+                
+                <th scope="row"><a href="/admin/users/image/">Images</a></th>
+                <td><a href="/admin/users/image/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-portfolio">
+                
+                <th scope="row"><a href="/admin/users/portfolio/">Portfolios</a></th>
+                <td><a href="/admin/users/portfolio/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-profile">
+                
+                <th scope="row"><a href="/admin/users/profile/">Profiles</a></th>
+                <td><a href="/admin/users/profile/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-skill">
+                
+                <th scope="row"><a href="/admin/users/skill/">Skills</a></th>
+                <td><a href="/admin/users/skill/add/" class="addlink">Add</a></td>
+            </tr>
+            
+            <tr class="model-training">
+                
+                <th scope="row"><a href="/admin/users/training/">Trainings</a></th>
+                <td><a href="/admin/users/training/add/" class="addlink">Add</a></td>
+            </tr>
+            
+        </table>
+        </div>
+    </nav>
+
+        <div class="content">
+            <!-- Content -->
+            <div id="content" class="colM">
+            <!-- Alerts -->
+            {% include 'partials/_alerts.html' %}
+
+            <h1>Add education</h1>
+            
+            <div id="content-main">
+    <form method="post" id="education_form" novalidate><input type="hidden" name="csrfmiddlewaretoken" value="J40ESruP59TsK0xWaSQQJUnA4IqnDK0NTkuZQSqmBuJckEL0x7ei7lJJI0gCvuHo">
+    <div>
+    <fieldset class="module aligned ">
+            
+        
+            <div class="form-row field-institute_name">
+                    <div>
+                            <label class="required" for="id_institute_name">Institute name:</label>
+                            
+                                <input type="text" name="institute_name" class="vTextField" maxlength="100" required id="id_institute_name">
+                            
+                    </div>
+                
+            </div>
+        
+            <div class="form-row field-degree">
+                    <div>
+                            <label class="required" for="id_degree">Degree:</label>
+                            
+                                <input type="text" name="degree" class="vTextField" maxlength="50" required id="id_degree">
+                            
+                    </div>
+                
+            </div>
+        
+            <div class="form-row field-location">
+                    <div>
+                            <label class="required" for="id_location">Location:</label>
+                            
+                                <input type="text" name="location" class="vTextField" maxlength="100" required id="id_location">
+                    
+                    </div>
+                
+            </div>
+        
+            <div class="form-row field-start_date">
+                    <div>
+                            <label class="required" for="id_start_date">Start date:</label>
+                            
+                                <input type="text" name="start_date" class="vDateField" size="10" required id="id_start_date">
+                            
+                    </div>
+                
+            </div>
+        
+            <div class="form-row field-end_date">
+                    <div>
+                            <label class="required" for="id_end_date">End date:</label>
+                            
+                                <input type="text" name="end_date" class="vDateField" size="10" required id="id_end_date">
+                            
+                    </div>
+                
+            </div>
+        
+            <div class="form-row field-description">
+                    <div>
+                            <label for="id_description">Description:</label>
+                            
+                                <textarea name="description" cols="40" rows="10" class="vLargeTextField" id="id_description">
+    </textarea>     
+                    </div>
+                
+            </div>
+        
+            <div class="form-row field-is_active">
+                    <div class="checkbox-row">
+                            <input type="checkbox" name="is_active" id="id_is_active" checked><label class="vCheckboxLabel" for="id_is_active">Is active</label>
+                        
+                    </div>
+                
+            </div>
+        
+    </fieldset>
+    <div class="submit-row">
+
+    <input type="submit" value="Save" class="default" name="_save">
+
+
+    <input type="submit" value="Save and add another" name="_addanother">
+    <input type="submit" value="Save and continue editing" name="_continue">
+
+
+    </div>
+        <script id="django-admin-form-add-constants"
+                src="/static/admin/js/change_form.js"
+                
+                    data-model-name="education"
+                
+                async>
+        </script>
+    <script id="django-admin-prepopulated-fields-constants"
+            src="/static/admin/js/prepopulate_init.js"
+            data-prepopulated-fields="[]">
+    </script>
+
+
+    </div>
+    </form></div>
+            <br class="clear">
+            </div>
+            <!-- END Content -->
+            <div id="footer"></div>
+        </div>
+        </div>
+    </div>
+    <!-- END Container -->
+
+    <a href="#home" id="toTop" style="display: block">
+      <span id="toTopHover" style="opacity: 1"> </span>
+    </a>
+    <!--start-smooth-scrolling-->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $().UItoTop({ easingType: "easeOutQuart" });
+      });
+    </script>
+    <!--end-smooth-scrolling-->
+    <!-- //for bootstrap working -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
