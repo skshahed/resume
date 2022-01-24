@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 import os
 from pathlib import Path
 
@@ -42,9 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -141,15 +144,21 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#Messages
-from django.contrib.messages import constants as messages
+# Messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-#Email config
+# Email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'shahed007cse@gmail.com'
 EMAIL_HOST_PASSWORD = 'shahed603951'
 EMAIL_USE_TLS = True
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+LOGOUT_REDIRECT_URL = '/'

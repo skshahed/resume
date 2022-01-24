@@ -28,7 +28,9 @@ h6 {
 
 /*-- header --*/
 #home {
-  background: url(../img/header-bg.jpg) no-repeat center top;
+  /* background: url(../img/header-bg.jpg) no-repeat center top; */
+  background-color: #85FFBD;
+  background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;

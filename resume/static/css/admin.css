@@ -1,10 +1,22 @@
+:root {
+    --background-color: #FFF;
+    --primary-color: #00a78e;
+    --secondary-color: #85FFBD;
+    --optional-color: #FFFB7D;
+    --color-one: #c208f1;
+    --color-two: #32cd32;
+    --color-three: #7b12f3;
+    --color-four: #a6ffa6;
+}
+
 #header {
-    background: #00ADA7;
-    color: #FFFFDC;
+    background: var(--color-four);
+    color: var(--primary-color);
+    padding: 1px 40px;
 }
 
 #branding h1 {
-    color: #FFFFDC;
+    color: var(--color-one);
 }
 
 a:link,
@@ -13,8 +25,8 @@ a:visited {
 }
 
 div.breadcrumbs {
-    background: #B3EECC;
-    color: #DE3961;
+    background: var(--secondary-color);
+    color: var(--color-two);
 }
 
 div.breadcrumbs a {
@@ -22,15 +34,15 @@ div.breadcrumbs a {
 }
 
 .module h2, .module caption, .inline-group h2 {
-    background: #A4E570;
+    background: var(--primary-color);
 }
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #00ADA7;
+    background: var(--primary-color);
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
-    background: #A4E570;
+    background: var(--color-two);
 }
 
 .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
@@ -41,8 +53,15 @@ background: #DE3961;
     background: #DE3961;
 }
 
+#user-tools a {
+    color: var(--color-two) !important;
+}
+
 #user-tools a:focus, #user-tools a:hover {
     text-decoration: none;
-    border-bottom-color: #A4E570;
-    color: #A4E570;
+    border-bottom-color: var(--color-one);
+    color: var(--color-one) !important;
 }
+
+
+

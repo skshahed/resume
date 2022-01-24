@@ -2,7 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 
+from django.db.models.deletion import DO_NOTHING
 
+
+    
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
     full_name = models.CharField(max_length=100)
@@ -18,16 +21,16 @@ class Profile(models.Model):
     country = models.CharField(max_length=50)
     nationality = models.CharField(max_length=50)
     website = models.CharField(max_length=100)
-    gender = models.IntegerField(default=1)
+    gender_choice = [('M','Male'),('F','Female'),('N','Neutral')]
+    gender = models.CharField(max_length=5,choices=gender_choice,default='M')
     religion = models.CharField(max_length=20)
-    marital_state = models.IntegerField(default=1)
+    marriage_choice = [('S','Single'),('M','Married'),('U','Unmarried')]
+    marital_state = models.CharField(max_length=5,choices=marriage_choice,default='S')
     is_published = models.BooleanField(default=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
         return self.full_name
-
-
 class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     image_path = models.ImageField(upload_to='photos/%Y/%m/%d', blank=True)
@@ -35,8 +38,6 @@ class Image(models.Model):
 
     def __str__(self):
         return str(self.user)
-
-
 class HirePlatform(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     platform_title = models.CharField(max_length=100)

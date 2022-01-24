@@ -1,1 +1,58 @@
-<h1>Search</h1>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} | Users
+{% endblock %}
+
+{% block content %}
+  <form action="" id="users-form" method="POST">
+   {% csrf_token %}
+        <div class="container bootdey">
+            <div class="row">
+            {% if users %} {% for user in users %}
+               <div class="col-md-3">
+                  <!-- START widget-->
+                  <div class="panel widget">
+                     <div class="half-float">
+                        <img src="{% static 'img/user-bg.jpg' %}" alt="" class="img-responsive">
+                        <div class="half-float-bottom">
+                            {% if user.min %}
+                            
+                                <img src="/media/{{ user.min }}" alt="Image" class="img-thumbnail img-circle thumb128"> 
+                              
+                           {% else %}
+                            
+                                <img src="{% static 'img/user-image.jpg' %}" alt="Image" class="img-thumbnail img-circle thumb128">
+                              
+                            {% endif %}
+                           
+                        </div>
+                     </div>
+                     <div class="panel-body text-center">
+                        <h3 class="m0">{{ user.full_name }}</h3>
+                        <p class="text-success">{{ user.profession }}</p>
+                        {% if user.city or user.country %}
+                            <h6><i class="fas fa-location"></i>{{ user.city }}, {{ user.country }}</h6>
+                        {% else %}
+                            <h6><i class="fas fa-location"></i>Unknown</h6>
+                        {% endif %}
+                     </div>
+
+                     <div class="panel-body text-center details-btn">
+                        <a class="btn btn-info" href="{% url 'user' user.id %}">Details</a>
+                     </div>
+                     
+                  </div>
+                  <!-- END widget-->
+               </div>
+               {% endfor %} {% else %}
+                <div class="col-md-12">
+                    <p>No User Available</p>
+                </div>
+                {% endif %}
+                
+            </div>
+            </div>
+   </form>
+{% endblock %}

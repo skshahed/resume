@@ -91,6 +91,12 @@
             </li>
             <li>
               <ul class="address-text">
+                <li><b>GENDER </b></li>
+                <li>{{ user.get_gender_display }}</li>
+              </ul>
+            </li>
+            <li>
+              <ul class="address-text">
                 <li><b>PHONE </b></li>
                 <li>{{ user.phone }}</li>
               </ul>
@@ -111,15 +117,13 @@
               <ul class="address-text">
                 <li><b>WEBSITE </b></li>
                 <li>
-                  <a href="{{ user.website }}" target="_blank"
-                    >{{ user.website }}</a
-                  >
+                  <a href="http://{{ user.website }}" target="_blank" >{{ user.website }}</a>
                 </li>
               </ul>
             </li>
           </ul>
         </div>
-        {% if images %} {% for image in images %}
+        {% if images %} {% for image in images|slice:":1" %}
         <div class="col-md-5 header-left">
           <div class="block-neon glow">
              <img src="{{ image.image_path.url }}" alt="" /> 

@@ -1,6 +1,17 @@
 {% load static %}
 <!-- about -->
 <div id="about" class="about">
+  
+  {% if images %} {% for image in images|slice:":1" %}
+  <div class="col-md-6 about-right" style="background-image: url({{image.image_path.url}}); background-size: cover;">
+    <!-- <img src="{{ image.image_path.url }}" alt="" class="about-right" />  -->
+  </div>  
+    {% endfor %} {% else %}
+    <div class="col-md-6 about-right" style="background-image: url({%static 'img/user-image.jpg'%}); background-size: cover;" >
+        <!-- <img src="{% static 'img/user-image.jpg' %}" class="about-right" alt="Ops!!!" /> -->
+    </div>
+  {% endif %}
+
   <div class="col-md-6 about-left">
     <div id="owl-demo1" class="owl-carousel owl-carousel2">
       {% if hireplatforms %} {% for hire in hireplatforms %}
@@ -14,20 +25,12 @@
             <!--  <li><a class="a-btn-a scroll" href="#port">My Work</a></li>
             <li><a class="a-btn-h scroll" href="#contact">Hire Me</a></li> -->
             <li>
-              <a
-                class="a-btn-a scroll"
-                href="{{ hire.platform_profile_link }}"
-                target="_blank"
-              >
+              <a href="{{hire.platform_profile_link}}" class="a-btn-a scroll"  target="_blank">
                 My Work
               </a>
             </li>
             <li>
-              <a
-                class="a-btn-h scroll"
-                href="{{ hire.platform_hire_link }}"
-                target="_blank"
-              >
+              <a class="a-btn-h scroll" href="{{hire.platform_hire_link}}" target="_blank">
                 Hire Me
               </a>
             </li>
@@ -41,7 +44,7 @@
       {% endif %}
     </div>
   </div>
-  <div class="col-md-6 about-right"></div>
+
   <div class="clearfix"></div>
   <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet" />
   <script src="{% static 'js/owl.carousel.js' %}"></script>

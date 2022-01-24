@@ -39,7 +39,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'image_path', 'is_active')
+    list_display = ('id', 'image_path', 'is_active')
     list_filter = ('user',)
     list_editable = ('is_active',)
     list_per_page = 20
@@ -53,10 +53,14 @@ class ImageAdmin(admin.ModelAdmin):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if request.user.is_superuser:
             kwargs["queryset"] = User.objects.all()
+            #kwargs["queryset"] = Profile.objects.all()
             
         elif db_field.name == "user":
             kwargs["queryset"] = User.objects.filter(username=request.user.username)
+           # kwargs["queryset"] = Profile.objects.filter(user=request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
+   
 
 class HirePlatformAdmin(admin.ModelAdmin):
     list_display = ('id', 'platform_title', 'platform_profile_link',

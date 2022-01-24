@@ -1,1 +1,35 @@
-<h1>User</h1>
+{% extends 'base.html' %}
+
+{% block title %} | User Profile
+{% endblock %}
+
+{% block content %}
+
+<!-- Alerts -->
+{% include 'partials/_alerts.html' %}
+
+<!-- Top Bar -->
+{% include 'partials/_navbar.html' %}
+
+<!-- About Section -->
+{% include 'partials/_about.html' %}
+
+<!-- Service Section -->
+{% include 'partials/_service.html' %}
+
+<!-- Experience Section -->
+{% include 'partials/_experience.html' %}
+
+<!-- Education Section -->
+{% include 'partials/_education.html' %}
+
+<!-- Portfolio Section -->
+{% include 'partials/_portfolio.html' %}
+
+<!-- Training Section -->
+{% include 'partials/_training.html' %}
+
+<!-- Footer -->
+{% include 'partials/_footer.html' %}
+
+{% endblock %}

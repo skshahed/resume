@@ -41,7 +41,10 @@
             {% for portfolio in portfolios %}
             <div class="col-md-3 team-gd">
               <a href="#portfolioModal{{ portfolio.id }}" class="portfolio-link b-link-diagonal b-animate-go"
-                data-toggle="modal"><img src="{{ portfolio.image_path.url }}" alt="" />
+                data-toggle="modal">
+                {% if portfolio.image_path %}
+                  <img src="{{ portfolio.image_path.url }}" alt="" />
+                {% endif %}
               </a>
             </div>
             {% endfor %}{% else %}
@@ -58,7 +61,10 @@
             <div class="col-md-3 team-gd ">
               <div class="thumb">
                 <a href="#portfolioModal{{ portfolio.id }}" class="portfolio-link b-link-diagonal b-animate-go"
-                  data-toggle="modal"><img src="{{ portfolio.image_path.url }}" alt="" />
+                  data-toggle="modal">
+                  {% if portfolio.image_path %}
+                    <img src="{{ portfolio.image_path.url }}" alt="" />
+                  {% endif %}
                 </a>
               </div>
             </div>
@@ -87,7 +93,9 @@
         <div class="col-lg-8 col-lg-offset-2 text-center">
           <div class="modal-body">
             <h3>{{ portfolio.portfolio_title }}</h3>
-            <img src="{{ portfolio.image_path.url }}" class="img-responsive img-centered" alt="" />
+            {% if portfolio.image_path %}
+              <img src="{{ portfolio.image_path.url }}" class="img-responsive img-centered" alt="" />
+            {% endif %}
             <p>
               {{ portfolio.portfolio_desc }}
             </p>
