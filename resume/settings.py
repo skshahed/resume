@@ -11,25 +11,25 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 from django.contrib.messages import constants as messages
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['127.0.0.1', 'sampledomain.com']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'mga-@c92207k4$qaadcrq9jei*e6u82l=#l7eswlr+swmgal+@'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,12 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -157,8 +156,9 @@ EMAIL_HOST_USER = 'shahed007cse@gmail.com'
 EMAIL_HOST_PASSWORD = 'shahed603951'
 EMAIL_USE_TLS = True
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-
 LOGOUT_REDIRECT_URL = '/'
+
+# try:
+# from .local_settings import *
+# except ImportError:
+# pass
