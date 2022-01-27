@@ -1,1 +1,1 @@
-web:gunicorn CCMS.wsgi --log-file -
+web:gunicorn resume.wsgi --log-file -
