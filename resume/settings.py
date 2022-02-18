@@ -24,7 +24,7 @@ SECRET_KEY = 'mga-@c92207k4$qaaddfgsd5sdfs5a3*e6u82l=#l7eswlr+swmgal+@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'sheikhshahed.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'sheikhshahed.herokuapp.com', 'www.sheikhshahed.herokuapp.com']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
